@@ -57,7 +57,7 @@ Rather than leaving the data model unconstrained, strict enterprise database eng
 3. Referential Integrity Constraints: Foreign Key constraints (FK) were established across all relational table bridges, locking in parent-child relationship structures and keeping dirty or unlinked orphan records from skewing corporate revenue reports.
  4. Automated Data Quality Ingestion & Reconciliation Audit
 Before exposing an analytics environment to frontend dashboards, an enterprise-grade Data Quality (DQ) Profiling Script was executed. This automated warehouse audit validates row metrics, verifies primary key uniqueness, and catches structural anomalies.
-
+![Healthcare Data Warehouse Star Schema](star_schema_diagram.png)
 
 📂 Day 3 : Tickets 
 🎟️ Ticket 1: 30-Day Hospital Readmission Velocity Diagnostic
