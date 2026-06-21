@@ -32,6 +32,7 @@ Initial exploratory data profiling in spreadsheet software revealed significant 
 3. Automated Data Dictionary Extraction
 To establish data governance before building analytics, a professional Data Dictionary was generated. Instead of manual data entry, schema metadata was extracted directly from the SQL Server system tables (sys.tables, sys.columns, and sys.types) using a dynamic extraction query.
 This automated layout was exported to Excel to serve as the project's Master Data Catalog, mapping out field names, system data types, byte lengths, and nullable properties alongside analyst notes defining their specific healthcare business meanings.
+
 📂 Day 2 : Schema Design & Dimensional Modeling
 1. The Strategy: The Analytical Star Schema
 To optimize our multi-table database for High-Performance Business Intelligence (Power BI/Tableau) and rapid analytical reporting, the 18 separate uncleaned staging tables were mapped into an optimized Star Schema data architecture.
@@ -40,18 +41,22 @@ This structural shift provides major advantages over flat files or transactional
 • Query Performance Optimization: Separating high-frequency operational metrics from contextual data attributes eliminates heavy relational scan-loops and optimizes memory usage during massive calculations.
 • Dashboard Speed: Direct 1-to-many star configurations completely eliminate performance-killing many-to-many lookup relationships or complex nested table logic inside Power BI.
 • The Transaction Ledger Mindset: Drawing on my foundational background in Banking ETL Architecture, this mirrors a standard accounting system ledger. Central fact logs capture structural numeric changes (debits/credits/vitals), while the surrounding reference tables control master lookup descriptors.
+
 2. The Architecture Components
 📊 Central Fact Tables (The Process Metrics)
 • analytics.fact_clinical_events (The Inpatient Operations Ledger): Stacks and unifies discrete event tracking timelines across encounters, medical diagnoses, surgical actions, and vaccine distributions into a single sequential table.
 • analytics.fact_claims_financials (The Revenue Cycle Engine): Holds granular, itemized transaction balances tracking gross charges, insurance payouts, claims adjustments, and patient liability amounts.
 • analytics.fact_observations (The Clinical Value Log): Captures multi-row clinical attributes like lab results and biometric vital sign tracks.
+
 🗂️ Surrounding Dimension Tables (The Contextual Metadata)
 • analytics.dim_patients: The single source of truth for patient demographics, master record keys, and financial baseline values.
 • analytics.dim_providers & analytics.dim_organizations: Tracks hospital networks, treating clinician metrics, specialties, and geographic facility tags.
 • analytics.dim_payers: Evaluates commercial and governmental insurance configurations alongside aggregated membership numbers.
 • analytics.dim_medical_codes: Houses standardized international classifications (SNOMED, CPT, CVX, RxNorm).
+
 3. Data Integrity & Constraint Engineering
 Rather than leaving the data model unconstrained, strict enterprise database engineering standards were applied via pure T-SQL pipelines:
+
 1. Data Type Purifications: Raw, volatile text files (VARCHAR) were cast into mathematically calculable data structures (DECIMAL(18,2)) and indexed calendar values (DATE/DATETIME) utilizing defensive TRY_CAST exception routing.
 2. Composite Primary Key Resolution: Discovery of cross-functional code overlaps (e.g., identical numeric strings utilized for both clinical conditions and medical procedures) was managed by implementing a custom Composite Primary Key constraint combining (code_key, code_type). This safeguarded the warehouse from key collision pipeline failures.
 3. Referential Integrity Constraints: Foreign Key constraints (FK) were established across all relational table bridges, locking in parent-child relationship structures and keeping dirty or unlinked orphan records from skewing corporate revenue reports.
