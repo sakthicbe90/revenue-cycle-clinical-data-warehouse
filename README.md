@@ -1,9 +1,11 @@
 # Revenue-cycle-clinical-data-warehouse
 A comprehensive 5-day professional simulation mimicking an enterprise Healthcare Data Analyst role. Transitions banking ETL data discipline into healthcare data governance, clinical diagnostics, and Revenue Cycle Management (RCM).
 
-📌 Project Overview
+📌 Project Overview:
+
 This project simulates a realistic, high-pressure five-day work week for a Healthcare Data Analyst working within a provider hospital network. Instead of focusing on a single, isolated dashboard, this portfolio piece demonstrates the end-to-end execution of structured sprint goals, urgent ad-hoc business requests, data quality auditing, and executive clinical storytelling.
 Transitioning from a background in Banking ETL Development, this project bridges the gap between backend data pipeline architecture and frontline healthcare business intelligence. It applies rigorous financial reconciliation principles to clinical, operational, and billing data structures.
+
 🛠️ The Business Scenario
 You are the primary Data Analyst assigned to a regional healthcare system. Throughout the week, you receive cross-functional tickets from the Chief Medical Officer (CMO), Director of Hospital Operations, and the Revenue Cycle Finance Team.
 The project utilizes a 18-table relational enterprise schema containing synthetic electronic health records (EHR), patient encounter lifecycles, clinical diagnosis codes (SNOMED/ICD-10), and insurance claims ledgers.
