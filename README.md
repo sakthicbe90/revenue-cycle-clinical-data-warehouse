@@ -103,4 +103,5 @@ To provide clear insights for the finance team, the query scans the line-item tr
 The analytical query processed all 61,399 transaction ledger lines and generated the following prioritized collection efficiency summary:
 
 
+<img width="1199" height="302" alt="tikcet2" src="https://github.com/user-attachments/assets/64268a0b-58a6-4e7b-8630-4463c0dd23af" />
 
