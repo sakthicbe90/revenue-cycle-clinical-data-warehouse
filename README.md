@@ -58,7 +58,8 @@ Rather than leaving the data model unconstrained, strict enterprise database eng
  4. Automated Data Quality Ingestion & Reconciliation Audit
 Before exposing an analytics environment to frontend dashboards, an enterprise-grade Data Quality (DQ) Profiling Script was executed. This automated warehouse audit validates row metrics, verifies primary key uniqueness, and catches structural anomalies.
 
-schema_diagram.png
+<img width="1446" height="1520" alt="schema_diagram" src="https://github.com/user-attachments/assets/9c6896d7-fba7-4d67-b98d-a988d17c6238" />
+
 
 📂 Day 3 : Tickets 
 🎟️ Ticket 1: 30-Day Hospital Readmission Velocity Diagnostic
