@@ -112,3 +112,37 @@ The analytical query processed all 61,399 transaction ledger lines and generated
 
 <img width="1199" height="302" alt="tikcet2" src="https://github.com/user-attachments/assets/64268a0b-58a6-4e7b-8630-4463c0dd23af" />
 
+
+📂Day 4 :Data Ingestion and Power BI Semantic Model
+
+1. Data Source and Schema
+The database architecture was pre-designed in SQL based on the Synthetic AL Medical Records dataset from Kaggle. The pre-built relational warehouse consists of staging tables alongside a structured Star/Snowflake Schema featuring 3 Fact Tables (analytics.fact_claims_financials, analytics.fact_clinical_events, and analytics.fact_observations) and 5 Dimension Tables (dim_patients, dim_providers, dim_payers, dim_organizations, and dim_medical_codes).
+
+3. ETL and Load Optimization
+When importing the database into Power BI Desktop, the 'Enable Load' option was turned off for all raw SQL staging tables. Only the final SQL dimension and fact tables were loaded into the model's memory. This keeps the semantic model lightweight, prevents data redundancy, and improves overall report performance.
+
+5. Centralized Time Intelligence
+Because the SQL database lacked a dedicated date dimension, a custom Dim_Date table was built natively inside Power BI using DAX (CALENDARAUTO). This new table serves as a conformed master calendar, linking a single timeline to the separate date columns across the three independent fact tables: service_date, event_date, and observation_date.
+
+7. Model Relationship Management
+Using Power BI's Model View, the pre-designed schema was fully connected by mapping the primary keys from the SQL dimensions to their corresponding foreign keys in the fact tables. All connections were verified as proper One-to-Many star schema relationships with a Single cross-filter direction flowing from dimensions to facts, ensuring accurate filtering behavior and optimized query execution paths.
+
+📂Day 5 :📊 Report Development & Dashboard Architecture
+
+1. UI/UX Interface & Interactive Navigation Hub
+• Centralized Landing Page (Home): Designed a streamlined, modern executive landing page featuring an asymmetric dual-tone layout (dark teal operational panel balanced with branding space).
+• 2x2 Responsive Navigation Grid: Implemented a native page navigation matrix using dynamic button states (Default, Hover, and Selected) integrated with clean, minimalist vector icons. This ensures seamless interactive transitions for report consumers.
+• Synchronized Side-Rail Panels: Deployed unified vertical side-navigation rails across all sub-pages, optimizing screen real estate by utilizing context-aware icons that intelligently exclude the active view to maintain a logical workflow.
+
+3. Page Structure & Specialized Operational Views
+The analytics framework was segmented into four separate operational chapters to analyze specific sectors of the relational warehouse:
+• Clinical Events & Encounters: Visualizes absolute patient throughput volumes over time, tracking facility utilization patterns and operational load across the medical network.
+• Financials & Claims Analysis: Provides accounting transparency by tracking transaction volumes and categorizing billing streams cleanly by transactional types (Gross Charges vs. System Transfers).
+• Patient Demographics: Segments the patient master catalog geographically by top-performing city centers, alongside household profiles (marital status) and custom chronological age cohorts.
+• Clinical Observations & Medical Insights: Evaluates the technical infrastructure of patient vitals and monitoring metrics categorized by diagnostic measurement units.
+
+5. Advanced DAX Engineering & Dimensional Modeling
+• Explicit Calculation Layers: Abstracted all data evaluation logic away from raw transactional columns by constructing standalone, dedicated calculation folders (_Clinical Measures, _Financial Measures, _Demographic Measures, _Observation Measures).
+• Custom Cohort Logic: Authored custom granular columns to group data patterns smoothly over long horizons, notably a 5-Year Cohort Builder and a multi-tiered Age Grouping Classifier.
+Referential Data Remediation: Handled synthetic data pipeline gaps (such as empty strings, single-character database codes like M/S/D, and broken key links) natively using Power Query M-code filters, conditional lookup maps, and visual-level advanced filtering to completely eliminate data gaps from the reporting layout.
+
