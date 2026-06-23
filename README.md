@@ -146,3 +146,15 @@ The analytics framework was segmented into four separate operational chapters to
 • Custom Cohort Logic: Authored custom granular columns to group data patterns smoothly over long horizons, notably a 5-Year Cohort Builder and a multi-tiered Age Grouping Classifier.
 Referential Data Remediation: Handled synthetic data pipeline gaps (such as empty strings, single-character database codes like M/S/D, and broken key links) natively using Power Query M-code filters, conditional lookup maps, and visual-level advanced filtering to completely eliminate data gaps from the reporting layout.
 
+Power BI Public URL link:
+https://app.powerbi.com/view?r=eyJrIjoiNGEwMjNiNGMtOTNhYS00MTE2LWI4MzMtNmI1ZTNiYmEyMTNkIiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9
+
+
+Kaggle notebook:
+
+https://www.kaggle.com/code/sakthipriyadarshini/healthcare-operation
+
+
+<img width="1152" height="659" alt="home page report" src="https://github.com/user-attachments/assets/3036cf03-503d-473a-a10c-5e8679c23fa9" />
+
+
